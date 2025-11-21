@@ -48,8 +48,8 @@
   </div>
 
   <script>
-    // 🔗 Your NEW Google Apps Script JSON feed & image proxy
-    const FEED_URL = "https://script.google.com/macros/s/AKfycbyN0lmbK3ZkLndUDVMHvSUbqxlWa9Tk75_toqhNsHWnmrRHwNZTfaZPdZxaI6Vqz2OyJQ/exec";
+    // 📌 Your confirmed working JSON feed
+    const FEED_URL = "https://script.google.com/macros/s/AKfycbyN0lmbK3ZkLndUDVMHvSUbqxlWa9Tk75_toqhNsHWnmrRHwNZTfaZPdZxaI6Vqz2OyJQ/exec?json=1";
 
     function getHourlyIndex(count) {
       const now = new Date();
@@ -72,7 +72,11 @@
       const img = document.createElement("img");
       img.src = url;
       img.alt = "Hourly image";
-      img.onerror = () => showMessage("Image failed to load.");
+
+      img.onerror = () => {
+        showMessage("Image failed to load.");
+      };
+
       container.appendChild(img);
     }
 
@@ -88,6 +92,7 @@
 
         const index = getHourlyIndex(images.length);
         const url = images[index];
+
         showImage(url);
 
       } catch (err) {
