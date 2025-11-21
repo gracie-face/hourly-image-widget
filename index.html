@@ -90,7 +90,7 @@
           return;
         }
 
-        const index = getHourlyIndex(images.length);
+        const index = Math.floor(Math.random() * images.length);
         const url = images[index];
 
         showImage(url);
